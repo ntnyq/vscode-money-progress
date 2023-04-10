@@ -1,0 +1,88 @@
+{
+  "publisher": "ntnyq",
+  "name": "vscode-money-progress",
+  "displayName": "VSCode Money Progress",
+  "version": "0.0.0",
+  "packageManager": "pnpm@8.2.0",
+  "description": "__TODO__",
+  "keywords": [],
+  "license": "MIT",
+  "author": {
+    "name": "ntnyq",
+    "email": "ntnyq13@gmail.com"
+  },
+  "homepage": "https://github.com/ntnyq/vscode-money-progress",
+  "repository": "ntnyq/vscode-money-progress",
+  "main": "./dist/index.js",
+  "icon": "https://ntnyq.com/static/icons/icon-192x192.png",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "NODE_ENV=production tsup",
+    "dev": "NODE_ENV=development tsup --watch",
+    "lint": "eslint .",
+    "pack": "vsce package",
+    "prepare": "husky install",
+    "publish": "vsce publish",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit",
+    "vscode:prepublish": "pnpm run build"
+  },
+  "devDependencies": {
+    "@ntnyq/eslint-config": "^1.6.1",
+    "@ntnyq/prettier-config": "^1.6.1",
+    "@types/node": "^18.15.11",
+    "@types/vscode": "^1.77.0",
+    "@vscode/vsce": "^2.18.0",
+    "bumpp": "^9.1.0",
+    "eslint": "^8.38.0",
+    "husky": "^8.0.3",
+    "nano-staged": "^0.8.0",
+    "pnpm": "^8.2.0",
+    "prettier": "^2.8.7",
+    "rimraf": "^5.0.0",
+    "tsup": "^6.7.0",
+    "typescript": "^5.0.4",
+    "vitest": "^0.30.0"
+  },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "title": "Toggle locale",
+        "command": "vscode-money-progress.toggleLocale",
+        "category": "VSCode Money Progress"
+      }
+    ],
+    "configuration": {
+      "title": "",
+      "properties": {
+        "vscode-money-progress.locale": {
+          "type": "string",
+          "default": "en-US",
+          "enum": [
+            "en-US",
+            "zh-CN"
+          ],
+          "description": "Locale for VSCode Money Progress."
+        }
+      }
+    }
+  },
+  "categories": [
+    "Other"
+  ],
+  "bugs": {
+    "url": "https://github.com/ntnyq/vscode-money-progress/issues/new"
+  },
+  "engines": {
+    "vscode": "^1.75.1"
+  },
+  "prettier": "@ntnyq/prettier-config",
+  "nano-staged": {
+    "*.{js,ts,md,json,yml,yaml}": "eslint --fix"
+  }
+}
